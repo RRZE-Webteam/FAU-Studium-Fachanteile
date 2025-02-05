@@ -1,0 +1,12 @@
+{
+    "require": {
+        "php": "^8.2.0",
+        "rrze/wp": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RRZE\\Events\\": "includes/"
+        }
+    }
+}
+
