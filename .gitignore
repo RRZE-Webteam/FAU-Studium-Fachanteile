@@ -13,7 +13,7 @@ package-lock.json
 composer.lock
 composer.phar
 ### WordPress ###
-*.pot
+
 ### Bundle ###
 bundle/
 ### Tmp ###

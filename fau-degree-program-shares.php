@@ -22,12 +22,12 @@ defined('ABSPATH') || exit;
 /**
  * Load the configuration file
  */
-require_once __DIR__ . '/config/config.php';
+//require_once __DIR__ . '/config/config.php';
 
 /**
  * Composer autoload
  */
-require_once __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 // Register plugin hooks.
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');

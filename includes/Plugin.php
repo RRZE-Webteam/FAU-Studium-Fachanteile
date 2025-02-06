@@ -1,6 +1,6 @@
 <?php
 
-namespace RRZE\RSVP;
+namespace Fau\DegreeProgram\Shares;
 
 defined('ABSPATH') || exit;
 

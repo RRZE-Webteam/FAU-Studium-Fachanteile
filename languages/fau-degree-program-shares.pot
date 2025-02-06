@@ -1,0 +1,84 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FAU Studium Fachanteile\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-06 16:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.1\n"
+"X-Domain: fau-degree-program-shares"
+
+#: includes/Settings.php:52
+msgid "API"
+msgstr ""
+
+#: includes/Shortcode.php:59
+msgctxt "Decimals separator"
+msgid "."
+msgstr ""
+
+#: includes/Settings.php:59
+msgid "DIP Edu API Key"
+msgstr ""
+
+#. Description of the plugin
+msgid "Display study subject shares as pie charts"
+msgstr ""
+
+#. Name of the plugin
+msgid "FAU Studium Fachanteile"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
+msgstr ""
+
+#. 1: The plugin name, 2: The error string.
+#: fau-degree-program-shares.php:136
+#, php-format
+msgid "Plugins: %1$s: %2$s"
+msgstr ""
+
+#. Author of the plugin
+msgid "RRZE-Webteam"
+msgstr ""
+
+#: includes/Settings.php:24 includes/Settings.php:35
+msgid "Settings"
+msgstr ""
+
+#: includes/Shortcode.php:52
+msgid "Share"
+msgstr ""
+
+#: includes/Shortcode.php:51
+msgid "Subject"
+msgstr ""
+
+#. 1: Server PHP version number, 2: Required PHP version number.
+#: fau-degree-program-shares.php:97
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+
+#. 1: Server WordPress version number, 2: Required WordPress version number.
+#: fau-degree-program-shares.php:89
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
