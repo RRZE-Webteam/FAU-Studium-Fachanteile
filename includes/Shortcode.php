@@ -7,24 +7,26 @@ class Shortcode
     public function __construct()
     {
         add_shortcode('fachanteile', [$this, 'shortcodeOutput']);
-        add_shortcode('subject-share', [$this, 'shortcodeOutput']);
+        add_shortcode('subject-shares', [$this, 'shortcodeOutput']);
     }
 
     public function shortcodeOutput($atts)
     {
         $args = shortcode_atts(
             ['subject' => '',
-             'degree' => '',],
+             'degree' => '',
+             'fach' => '',
+             'abschluss' => '',],
             $atts);
-        $subject = (int)$args['subject'];
-        $degree = (int)$args['degree'];
+        $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];
+        $degree = $args['degree'] != '' ? (int)$args['degree'] : (int)$args['abschluss'];
 
         if ($subject == 0 || $degree == 0) {
             return '';
         }
 
         $api = new API();
-        $data = $api->getData($subject, $degree);
+        $data = $api->getShares($subject, $degree);
         /*print "<pre>";
         var_dump($data);
         //echo array_sum(array_column($data, 'percent'));
@@ -44,6 +46,7 @@ class Shortcode
         $output .= '</table>';*/
 
         $count = 0;
+        //$output = '<div class="arc1"></div><div class="arc2"></div>';
         $output = '<div id="my-chart" style="width: 300px; float: left; margin-right: 30px;">'
         . '<table class="fau-subject-shares charts-css pie hide-data Xshow-labels">'
         . ' <thead>

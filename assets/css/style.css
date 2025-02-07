@@ -26,4 +26,39 @@ ul.legend li:before {
   margin-right: 0.5em;
 }
 
+.arc1 {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  --a: 98.172deg; /* control the progression */
+  width: 300px;
+  aspect-ratio: 1;
+  padding: 60px; /* the boder thickness */
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #c0d860;
+  mask: linear-gradient(rgba(0, 0, 0, 0) 0 0) content-box intersect, conic-gradient(#000 var(--a), rgba(0, 0, 0, 0) 0);
+}
+.arc1:hover {
+  border: 2px solid red;
+}
+
+.arc2 {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  --a: 98.172deg; /* control the progression */
+  width: 300px;
+  aspect-ratio: 1;
+  padding: 60px; /* the boder thickness */
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: green;
+  mask: linear-gradient(rgba(0, 0, 0, 0) 0 0) content-box intersect, conic-gradient(#000 var(--a), rgba(0, 0, 0, 0) 0);
+  rotate: 98.172deg;
+}
+.arc2:hover {
+  border: 2px solid red;
+}
+
 /*# sourceMappingURL=style.css.map */
