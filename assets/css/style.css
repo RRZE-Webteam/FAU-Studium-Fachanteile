@@ -1,64 +1,16 @@
-.charts-css.pie:after {
-  content: "";
-  width: 60%;
-  height: 60%;
-  border-radius: 50%;
-  background: #fff;
-  position: absolute;
-  top: 20%;
-  left: 20%;
+div[id^=chart_] {
+  max-width: 50%;
+  min-width: 400px;
+}
+div[id^=chart_] .apexcharts-legend-series {
+  align-items: start;
+}
+div[id^=chart_] .apexcharts-legend-series .apexcharts-legend-marker {
+  min-width: 16px;
 }
 
-ul.legend {
-  list-style-type: none;
-  margin: 0;
-}
-ul.legend li {
-  list-style-type: none;
-}
-ul.legend li:before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background-color: var(--color);
-  border: 1px solid #000;
-  margin-right: 0.5em;
-}
-
-.arc1 {
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  --a: 98.172deg; /* control the progression */
-  width: 300px;
-  aspect-ratio: 1;
-  padding: 60px; /* the boder thickness */
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: #c0d860;
-  mask: linear-gradient(rgba(0, 0, 0, 0) 0 0) content-box intersect, conic-gradient(#000 var(--a), rgba(0, 0, 0, 0) 0);
-}
-.arc1:hover {
-  border: 2px solid red;
-}
-
-.arc2 {
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  --a: 98.172deg; /* control the progression */
-  width: 300px;
-  aspect-ratio: 1;
-  padding: 60px; /* the boder thickness */
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: green;
-  mask: linear-gradient(rgba(0, 0, 0, 0) 0 0) content-box intersect, conic-gradient(#000 var(--a), rgba(0, 0, 0, 0) 0);
-  rotate: 98.172deg;
-}
-.arc2:hover {
-  border: 2px solid red;
+table.fau-subject-shares {
+  width: auto;
 }
 
 /*# sourceMappingURL=style.css.map */

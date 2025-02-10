@@ -16,10 +16,16 @@ class Shortcode
             ['subject' => '',
              'degree' => '',
              'fach' => '',
-             'abschluss' => '',],
+             'abschluss' => '',
+             'format' => 'chart'],
             $atts);
         $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];
         $degree = $args['degree'] != '' ? (int)$args['degree'] : (int)$args['abschluss'];
+        $format = in_array($args['format'], array('chart', 'table')) ? $args['format'] : 'chart';
+        $tableClass = 'fau-subject-shares';
+        if ($format == 'chart') {
+            $tableClass .= ' sr-only';
+        }
 
         if ($subject == 0 || $degree == 0) {
             return '';
@@ -27,56 +33,89 @@ class Shortcode
 
         $api = new API();
         $data = $api->getShares($subject, $degree);
-        /*print "<pre>";
-        var_dump($data);
-        //echo array_sum(array_column($data, 'percent'));
-        print "</pre>";*/
 
         if (empty($data)) return '';
 
-        $legend = '';
-
-        /*$output = '<table class="fau-subject-shares">';
+        $output = '<table class="' . $tableClass . '">'
+                    . ' <thead>
+                        <tr>
+                          <th scope="col">' . __('Subject', 'fau-degree-program-shares') . '</th>
+                          <th scope="col">' . __('Share', 'fau-degree-program-shares') . '</th>
+                        </tr>
+                      </thead>
+                      <tbody>';
         foreach ($data as $item) {
             $output .= '<tr>'
                 . '<td>' . $item['share'] . '</td>'
-                . '<td>' . number_format($item['percent'] * 100, 2) . '%' . '</td>'
+                . '<td>' . number_format($item['percent'] * 100, 0) . '%' . '</td>'
                 . '</tr>';
-        }
-        $output .= '</table>';*/
-
-        $count = 0;
-        //$output = '<div class="arc1"></div><div class="arc2"></div>';
-        $output = '<div id="my-chart" style="width: 300px; float: left; margin-right: 30px;">'
-        . '<table class="fau-subject-shares charts-css pie hide-data Xshow-labels">'
-        . ' <thead>
-            <tr>
-              <th scope="col">' . __('Subject', 'fau-degree-program-shares') . '</th>
-              <th scope="col">' . __('Share', 'fau-degree-program-shares') . '</th>
-            </tr>
-          </thead>
-          <tbody>';
-        foreach ($data as $item) {
-            $start = $count;
-            $end = $count + $item['percent'];
-            $percent = number_format($item['percent'] * 100, 2, _x('.', 'Decimals separator', 'fau-degree-program-shares')) . '%';
-            $output .= '<tr>'
-                       . '<th scope="row">' . $item['share'] . '</td>'
-                       . '<td style="--start: '. $start . '; --end: '. $end . '; --color: ' . $item['color']  . ';">'
-                            . '<span class="data">' . $percent . '</span>'
-                       . '</td>'
-                       . '</tr>';
-            $count = $end;
-            $legend .= '<li style="--color: ' . $item['color']  . ';">' . $item['share'] . ' (' . $percent . ')' . '</li>';
         }
         $output .= '</tbody></table>';
 
-        $output .='</div>';
+        if ($format == 'chart') {
+            $aSeries = [];
+            $aColors = [];
+            $aLabels = [];
+            foreach ($data as $item) {
+                $aSeries[] = number_format($item[ 'percent' ] * 100, 2);
+                $aColors[] = $item[ 'color' ];
+                $aLabels[] = $item[ 'share' ];
+            }
+            $sSeries = '[' . implode(',', $aSeries) . ']';
+            $sColors = "['" . implode("','", $aColors) . "']";
+            $sLabels = "['" . implode("','", $aLabels) . "']";
 
-        $output .= '<ul class="legend" aria-hidden="true">' . $legend . '</ul>';
+            $chartID = 'chart_' . $subject . '-' . $degree . '_' . rand(0, 9999);
+            $output  .= '<div id="' . $chartID . '" aria-hidden="true"></div>';
+            $script  = "
+            <script>             
+                var options = {
+                    series: $sSeries,
+                    labels: $sLabels,
+                    legend: {
+                        show: true,
+                        fontSize: '15px',
+                        width: 300,
+                        height: undefined,
+                    },
+                    tooltip: {
+                        fillSeriesColor: false,
+                        theme: 'dark',
+                    },
+                    chart: {
+                      type: 'donut',
+                    },
+                    colors:$sColors,
+                    plotOptions: {
+                      pie: {
+                        size: 100,
+                        donut: {
+                            size: '50%',
+                        }
+                      }
+                    },
+                    /*responsive: [{
+                      breakpoint: 480,
+                      options: {
+                        chart: {
+                          width: 200
+                        },
+                        legend: {
+                          position: 'bottom'
+                        }
+                      }
+                    }]*/
+                };
+                var chart = new ApexCharts(document.querySelector(\"#$chartID\"), options);
+                chart.render();
+            </script>";
+
+            wp_enqueue_script('fau-degree-program-shares-apexcharts');
+            wp_enqueue_style('fau-degree-program-shares-apexcharts');
+            add_action('wp_footer', function () use ($script) { echo $script; }, 99 );
+        }
 
         wp_enqueue_style('fau-degree-program-shares');
-        wp_enqueue_style('fau-degree-program-shares-charts');
 
         return $output;
     }

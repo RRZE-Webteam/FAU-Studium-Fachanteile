@@ -1,0 +1,9 @@
+.wp-admin #fau-degree-program-shares label {
+  display: block;
+  padding: 0.2em 0;
+}
+.wp-admin #fau-degree-program-shares select {
+  max-width: 90%;
+}
+
+/*# sourceMappingURL=admin.css.map */

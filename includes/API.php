@@ -89,7 +89,7 @@ class API
             set_transient( $transientName, $data, DAY_IN_SECONDS );
             return $data;
         } else {
-            return json_decode( $value );
+            return $value;
         }
     }
 
