@@ -1,14 +1,68 @@
-div[id^=chart_] {
-    max-width: 50%;
-    min-width: 400px;
-    .apexcharts-legend-series {
-        align-items: start;
-        .apexcharts-legend-marker {
-            min-width: 16px;
+.fau-subject-shares {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1em;
+    column-gap: 2em;
+    align-items: flex-start;
+    svg.chart {
+        &:hover {
+            //stroke-width: 20px;
+            path {
+                &:hover {
+                   // filter: brightness(80%);
+                    //stroke-width: 1px;
+                }
+            }
+        }
+        path {
+            &:hover {
+                //transform: translate(10px, 10px);
+                //filter: opacity(150%);
+                //stroke-width: 1px;
+            }
+        }
+        /* TODO:
+            - flex-wrap abhängig von Box-Größe
+            - hover-Effekt
+         */
+    }
+    .tooltip {
+        position: absolute; /* must have this */
+        background: #000;
+        background: rgba(0,0,0,.7);
+        color: #fff;
+        font: normal 11px/15px sans-serif;
+        padding: 3px 10px;
+        border-radius: 3px;
+        white-space: nowrap;
+        .tooltip-label {
+            font-weight: bold;
         }
     }
-}
+    ul.chart-legend {
+        margin: 0 0 1em;
+        padding: 1em;
+        border: 1px solid var(--color-ContentBorders, #dfe6ec);
+        width: auto;
+        li {
+            list-style-type: none;
+            &:before {
+                display: inline-block;
+                content: '';
+                height: 1.2em;
+                width: 1.2em;
+                border-radius: 100%;
+                background-color: var(--share-color);
+                margin-right: .5em;
+                border: 1px solid grey;
+                position: relative;
+                top: .2em;
+            }
+        }
+    }
 
-table.fau-subject-shares {
-    width: auto;
+    table.shares-table {
+        width: auto;
+    }
 }

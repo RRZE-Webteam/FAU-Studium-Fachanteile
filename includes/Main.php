@@ -53,39 +53,17 @@ class Main
 
     public function wpEnqueueScripts()
     {
-        /*wp_register_style(
-            'fau-degree-program-shares-charts',
-            plugins_url('assets/css/charts.css', plugin()->getBasename()),
-            [],
-            plugin()->getVersion()
-        );*/
         wp_register_style(
             'fau-degree-program-shares',
             plugins_url('assets/css/style.css', plugin()->getBasename()),
             [],
             plugin()->getVersion()
         );
-        wp_register_style(
-            'fau-degree-program-shares-apexcharts',
-            plugins_url('node_modules/apexcharts/dist/apexcharts.css', plugin()->getBasename()),
-            [],
-            plugin()->getVersion()
-        );
         wp_register_script(
-            'fau-degree-program-shares-apexcharts',
-            plugins_url('node_modules/apexcharts/dist/apexcharts.js', plugin()->getBasename()),
+            'fau-degree-program-shares-svgarcandslice',
+            plugins_url('assets/js/svgarcandpieslice.js', plugin()->getBasename()),
             ['jquery'],
             plugin()->getVersion()
         );
-        wp_register_script(
-            'fau-degree-program-shares',
-            plugins_url('assets/js/script.js', plugin()->getBasename()),
-            ['jquery'],
-            plugin()->getVersion()
-        );
-        wp_localize_script('fau-degree-program-shares', 'fdps_ajax', [
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('fdps-ajax-nonce'),
-        ]);
     }
 }
