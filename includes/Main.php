@@ -48,8 +48,13 @@ class Main
                 ['jquery'],
                 plugin()->getVersion()
             );
-        $degreeOptions = [];
-        $subjectOptions = [];
+        $degreeOptions = [
+            ['value' => '0',
+             'label' => __('-- Select --', 'fau-degree-program-shares'),]
+        ];
+        $subjectOptions = [
+            ['value' => '0',
+             'label' => __('-- Select --', 'fau-degree-program-shares'),]];
         $api = new API();
         $degreesRaw = $api->getDegrees();
         foreach ($degreesRaw as $degree) {
@@ -60,7 +65,7 @@ class Main
         }
         $subjectsRaw = $api->getSubjects();
         foreach ($subjectsRaw as $subject) {
-            $degreeOptions[] = [
+            $subjectOptions[] = [
                 'value' => $subject['campo_key'],
                 'label' => $subject['name'],
             ];
