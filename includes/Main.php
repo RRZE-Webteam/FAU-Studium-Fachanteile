@@ -48,7 +48,27 @@ class Main
                 ['jquery'],
                 plugin()->getVersion()
             );
-
+        $degreeOptions = [];
+        $subjectOptions = [];
+        $api = new API();
+        $degreesRaw = $api->getDegrees();
+        foreach ($degreesRaw as $degree) {
+            $degreeOptions[] = [
+                'value' => $degree['campo_key'],
+                'label' => $degree['name'],
+            ];
+        }
+        $subjectsRaw = $api->getSubjects();
+        foreach ($subjectsRaw as $subject) {
+            $degreeOptions[] = [
+                'value' => $subject['campo_key'],
+                'label' => $subject['name'],
+            ];
+        }
+        wp_localize_script('wp-blocks', 'sharesBlockData', [
+            'degreeOptions' => $degreeOptions,
+            'subjectOptions' => $subjectOptions,
+        ]);
     }
 
     public function wpEnqueueScripts()

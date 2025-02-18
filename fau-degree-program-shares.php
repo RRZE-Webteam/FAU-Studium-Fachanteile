@@ -148,4 +148,12 @@ function loaded()
 
     // If there are no errors, create an instance of the 'Main' class and trigger its 'loaded' method.
     (new Main(__FILE__))->onLoaded();
+
+    add_action('init', __NAMESPACE__ . '\createBlock');
+}
+
+function createBlock(): void {
+    register_block_type( __DIR__ . '/build/block' );
+    $script_handle_speaker = generate_block_asset_handle( 'fau-degree-program/shares', 'editorScript' );
+    wp_set_script_translations( $script_handle_speaker, 'fau-degree-program-shares', plugin_dir_path( __FILE__ ) . 'languages' );
 }

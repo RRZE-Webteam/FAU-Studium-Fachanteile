@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fau-degree-program/shares",
+	"version": "1.0.0",
+	"title": "FAU-Studium Fachanteile",
+	"category": "rrze-plugins",
+	"description": "FAU-Studium Fachanteile",
+	"example": {},
+	"attributes": {
+		"selectedDegree": {
+			"type": "string",
+			"default": ""
+		},
+		"selectedSubject": {
+			"type": "string",
+			"default": ""
+		},
+		"format": {
+			"type": "string",
+			"default": "chart"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "fau-degree-program-shares",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

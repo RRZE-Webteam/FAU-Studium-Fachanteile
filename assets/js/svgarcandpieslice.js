@@ -63,13 +63,7 @@ function drawPieSlice(settings)
     arc.setAttributeNS(null, "data-percent", settings.percent + "%");
     arc.setAttributeNS(null, "title", settings.label + ": " + settings.percent + "%");
 
-    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    text.setAttributeNS(null, "class", "share-tooltip");
-    text.setAttributeNS(null, "style", "font-size: 20px;");
-    text.innerHTML = settings.label + ": " + settings.percent + "%";
-
     document.getElementById(settings.id).appendChild(arc);
-    document.getElementById(settings.id).appendChild(text);
 
 }
 
@@ -84,7 +78,7 @@ jQuery(document).ready(function($) {
                 offset 	= $this.offset(),
                 xOffset = e.pageX - offset.left + 10,
                 yOffset = e.pageY - offset.top + 30,
-                tooltip = $('div.fau-subject-shares').find('div.tooltip');
+                tooltip = $(this).parents('div.fau-subject-shares').find('div.tooltip');
             if( type == 'mouseenter' ) {
                 tooltip.append(title)
                     .hide().fadeIn(250)

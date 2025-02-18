@@ -5,6 +5,7 @@
     row-gap: 1em;
     column-gap: 2em;
     align-items: flex-start;
+    margin-bottom: 2em;
     svg.chart {
         &:hover {
             //stroke-width: 20px;
@@ -28,14 +29,17 @@
          */
     }
     .tooltip {
-        position: absolute; /* must have this */
+        display: none;
+        z-index: 1;
+        position: absolute;
         background: #000;
         background: rgba(0,0,0,.7);
         color: #fff;
-        font: normal 11px/15px sans-serif;
+        font: normal 14px/21px sans-serif;
         padding: 3px 10px;
         border-radius: 3px;
-        white-space: nowrap;
+        //white-space: nowrap;
+        max-width: 240px;
         .tooltip-label {
             font-weight: bold;
         }

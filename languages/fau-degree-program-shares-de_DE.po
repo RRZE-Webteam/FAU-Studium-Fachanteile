@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FAU Studium Fachanteile\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-06 11:17+0000\n"
-"PO-Revision-Date: 2025-02-06 16:28+0000\n"
+"PO-Revision-Date: 2025-02-18 10:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -12,17 +12,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.1; wp-6.7.1\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
 "X-Domain: fau-degree-program-shares"
+
+#: includes/Metabox.php:33 includes/Metabox.php:41
+msgid "-- Select --"
+msgstr "-- Auswählen --"
 
 #: includes/Settings.php:52
 msgid "API"
 msgstr "API"
 
-#: includes/Shortcode.php:59
-msgctxt "Decimals separator"
-msgid "."
-msgstr ","
+#: includes/Metabox.php:51
+msgid "Copy"
+msgstr "Kopieren"
+
+#: includes/Metabox.php:31
+msgid "Degree"
+msgstr "Abschluss"
 
 #: includes/Settings.php:59
 msgid "DIP Edu API Key"
@@ -58,11 +65,15 @@ msgstr "RRZE-Webteam"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/Shortcode.php:52
+#: includes/Shortcode.php:59
 msgid "Share"
 msgstr "Anteil"
 
-#: includes/Shortcode.php:51
+#: includes/Metabox.php:15
+msgid "Study Shares Wizard"
+msgstr "Shortcode Studien-Fachanteile"
+
+#: includes/Shortcode.php:58 includes/Metabox.php:39
 msgid "Subject"
 msgstr "Fach"
 

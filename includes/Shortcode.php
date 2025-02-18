@@ -22,10 +22,6 @@ class Shortcode
         $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];
         $degree = $args['degree'] != '' ? (int)$args['degree'] : (int)$args['abschluss'];
         $format = in_array($args['format'], array('chart', 'table')) ? $args['format'] : 'chart';
-        $tableClass = 'shares-table';
-        if ($format == 'chart') {
-            $tableClass .= ' sr-only';
-        }
 
         if ($subject == 0 || $degree == 0) {
             return '';
@@ -38,9 +34,10 @@ class Shortcode
 
         $rand = rand(0, 9999);
         $output = '<div class="fau-subject-shares" id="fau-subject-shares-' . $rand . '">';
-        $output .= $this->renderTable($data, $tableClass);
 
-        if ($format == 'chart') {
+        if ($format == 'table') {
+            $output .= $this->renderTable($data);
+        } else {
             $output .= $this->renderChart($data, $subject, $degree, $rand);
         }
 
@@ -51,8 +48,8 @@ class Shortcode
         return $output;
     }
 
-    private function renderTable($data, $tableClass) {
-        $output = '<table class="' . $tableClass . '">'
+    private function renderTable($data) {
+        $output = '<table class="shares-table">'
                   . ' <thead>
                         <tr>
                           <th scope="col">' . __('Subject', 'fau-degree-program-shares') . '</th>
@@ -91,7 +88,7 @@ class Shortcode
         $svgID = 'svg_' . $subject . '-' . $degree . '_' . $rand;
         $output .= '<svg height="300" width="300" viewBox="0 0 512 512" class="chart" id="' . $svgID . '" aria-hidden="true"></svg>';
         $output .= '<div class="tooltip"></div>';
-        $output .= '<ul class="chart-legend" aria-hidden="true">'. $sLegend . '</ul>';
+        $output .= '<ul class="chart-legend">'. $sLegend . '</ul>';
 
         $script  = "
             <script>             
@@ -103,21 +100,20 @@ class Shortcode
             
                 let startAngleRadians" . $rand . " = 0 - Math.PI / 2;
                 let sweepAngleRadians" . $rand . " = null;
-                let label = '';
-                let percent = '';
+                let label" . $rand . " = '';
+                let percent" . $rand . " = '';
             
                 for(let i = 0, l = data" . $rand . ".length; i < l; i++)
                 {
-                    label = labels" . $rand . "[i];
-                    percent = Math.round(data" . $rand . "[i]);
+                    label" . $rand . " = labels" . $rand . "[i];
+                    percent" . $rand . " = Math.round(data" . $rand . "[i]);
                     sweepAngleRadians" . $rand . " = data" . $rand . "[i] * radiansPerUnit" . $rand . ";
             
-                    drawPieSlice({ id: '" . $svgID . "', centreX: 256, centreY: 256, startAngleRadians: startAngleRadians" . $rand . ", sweepAngleRadians: sweepAngleRadians" . $rand . ", radius: 250, fillColour: colours" . $rand . "[i], strokeColour: '#ffffff', label: label, percent: percent} );
+                    drawPieSlice({ id: '" . $svgID . "', centreX: 256, centreY: 256, startAngleRadians: startAngleRadians" . $rand . ", sweepAngleRadians: sweepAngleRadians" . $rand . ", radius: 250, fillColour: colours" . $rand . "[i], strokeColour: '#ffffff', label: label" . $rand . ", percent: percent" . $rand . "} );
             
                     startAngleRadians" . $rand . " += sweepAngleRadians" . $rand . ";
                 }
                 document.getElementById('" . $svgID . "').innerHTML += '<circle r=\"100\" cx=\"256\" cy=\"256\" fill=\"#FFFFFF\" />';
-                //document.getElementById('" . $svgID . "').innerHTML += '<text class=\"tooltip\"></text>';
 
             </script>";
 
@@ -128,7 +124,6 @@ class Shortcode
 
         /*
          * TODO:
-         *  - Tooltips
          *  - JS für hover in der Legende
          */
     }
