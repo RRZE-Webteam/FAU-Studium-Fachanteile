@@ -12,6 +12,7 @@ class Shortcode
 
     public function shortcodeOutput($atts)
     {
+
         $args = shortcode_atts(
             ['subject' => '',
              'degree' => '',
@@ -44,6 +45,7 @@ class Shortcode
         $output .= '</div>';
 
         wp_enqueue_style('fau-degree-program-shares');
+        wp_enqueue_script('fau-degree-program-shares');
 
         return $output;
     }
@@ -69,56 +71,19 @@ class Shortcode
     }
 
     private function renderChart($data, $subject, $degree, $rand) {
+
         $output = '';
-        $aSeries = [];
-        $aColors = [];
-        $aLabels = [];
-        $aLegend = [];
+
+        $legend = '<ul class="chart-legend">';
         foreach ($data as $item) {
-            $aSeries[] = number_format($item[ 'percent' ] * 100, 2);
-            $aColors[] = $item[ 'color' ];
-            $aLabels[] = $item[ 'share' ];
-            $aLegend[] = '<li style="--share-color: ' . $item[ 'color' ] . '">' . $item[ 'share' ] . ' (' . number_format($item[ 'percent' ] * 100, 0) . '%)</li>';
+            $legend .= '<li style="--share-color: ' . $item[ 'color' ] . '">' . $item[ 'share' ] . ' (' . number_format($item[ 'percent' ] * 100, 0) . '%)</li>';
         }
-        $sSeries = '[' . implode(',', $aSeries) . ']';
-        $sColors = "['" . implode("','", $aColors) . "']";
-        $sLabels = "['" . implode("','", $aLabels) . "']";
-        $sLegend = implode('', $aLegend);
+        $legend .= '</ul>';
 
         $svgID = 'svg_' . $subject . '-' . $degree . '_' . $rand;
-        $output .= '<svg height="300" width="300" viewBox="0 0 512 512" class="chart" id="' . $svgID . '" aria-hidden="true"></svg>';
+        $output .= Helper::drawPieChart($svgID, $data);
         $output .= '<div class="tooltip"></div>';
-        $output .= '<ul class="chart-legend">'. $sLegend . '</ul>';
-
-        $script  = "
-            <script>             
-                const colours" . $rand . " = $sColors;
-                const data" . $rand . " = $sSeries;
-                const labels" . $rand . " = $sLabels;
-                const total" . $rand . " = data" . $rand . ".reduce((a,b) => a + b); // = 137
-                const radiansPerUnit" . $rand . " = (2 * Math.PI) / total" . $rand . ";
-            
-                let startAngleRadians" . $rand . " = 0 - Math.PI / 2;
-                let sweepAngleRadians" . $rand . " = null;
-                let label" . $rand . " = '';
-                let percent" . $rand . " = '';
-            
-                for(let i = 0, l = data" . $rand . ".length; i < l; i++)
-                {
-                    label" . $rand . " = labels" . $rand . "[i];
-                    percent" . $rand . " = Math.round(data" . $rand . "[i]);
-                    sweepAngleRadians" . $rand . " = data" . $rand . "[i] * radiansPerUnit" . $rand . ";
-            
-                    drawPieSlice({ id: '" . $svgID . "', centreX: 256, centreY: 256, startAngleRadians: startAngleRadians" . $rand . ", sweepAngleRadians: sweepAngleRadians" . $rand . ", radius: 250, fillColour: colours" . $rand . "[i], strokeColour: '#ffffff', label: label" . $rand . ", percent: percent" . $rand . "} );
-            
-                    startAngleRadians" . $rand . " += sweepAngleRadians" . $rand . ";
-                }
-                document.getElementById('" . $svgID . "').innerHTML += '<circle r=\"100\" cx=\"256\" cy=\"256\" fill=\"#FFFFFF\" />';
-
-            </script>";
-
-        wp_enqueue_script('fau-degree-program-shares-svgarcandslice');
-        add_action('wp_footer', function () use ($script) { echo $script; }, 99 );
+        $output .= $legend;
 
         return $output;
 

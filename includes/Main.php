@@ -74,6 +74,12 @@ class Main
             'degreeOptions' => $degreeOptions,
             'subjectOptions' => $subjectOptions,
         ]);
+        wp_register_script(
+            'fau-degree-program-shares',
+            plugins_url('assets/js/script.js', plugin()->getBasename()),
+            ['jquery'],
+            plugin()->getVersion()
+        );
     }
 
     public function wpEnqueueScripts()
@@ -85,8 +91,8 @@ class Main
             plugin()->getVersion()
         );
         wp_register_script(
-            'fau-degree-program-shares-svgarcandslice',
-            plugins_url('assets/js/svgarcandpieslice.js', plugin()->getBasename()),
+            'fau-degree-program-shares',
+            plugins_url('assets/js/script.js', plugin()->getBasename()),
             ['jquery'],
             plugin()->getVersion()
         );

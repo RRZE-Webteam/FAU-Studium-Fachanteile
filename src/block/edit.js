@@ -4,17 +4,18 @@ import { SelectControl } from '@wordpress/components';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 
 import './editor.scss';
+import ServerSideRender from "@wordpress/server-side-render";
 
 
 const Edit = (props) => {
 
     const { attributes, setAttributes } = props;
-    const { selectedDegree, selectedSubject } = attributes;
-    const [format, setFormat] = useState( attributes.format || 'chart' );
+    const { selectedDegree, selectedSubject, selectedFormat } = attributes;
 
     // Zustand für die dynamischen Optionen
     const [degree, setDegree] = useState([]);
     const [subject, setSubject] = useState([]);
+    const [format, setFormat] = useState( attributes.selectedFormat || 'chart' );
 
     // Daten aus PHP abrufen (aus window.sharesBlockData)
     useEffect(() => {
@@ -49,8 +50,10 @@ const Edit = (props) => {
                     />
                 </>
             </InspectorControls>
-            <p>Auswahl 1: {selectedDegree}</p>
-            <p>Auswahl 2: {selectedSubject}</p>
+            <ServerSideRender
+                block="fau-degree-program/shares"
+                attributes={attributes}
+            />
         </div>
     );
 
