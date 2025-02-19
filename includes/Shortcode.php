@@ -18,11 +18,13 @@ class Shortcode
              'degree' => '',
              'fach' => '',
              'abschluss' => '',
-             'format' => 'chart'],
+             'format' => 'chart',
+             'percent' => '1'],
             $atts);
         $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];
         $degree = $args['degree'] != '' ? (int)$args['degree'] : (int)$args['abschluss'];
         $format = in_array($args['format'], array('chart', 'table')) ? $args['format'] : 'chart';
+        $showPercent = $args['percent'] == '1';
 
         if ($subject == 0 || $degree == 0) {
             return '';
@@ -39,7 +41,7 @@ class Shortcode
         if ($format == 'table') {
             $output .= $this->renderTable($data);
         } else {
-            $output .= $this->renderChart($data, $subject, $degree, $rand);
+            $output .= $this->renderChart($data, $subject, $degree, $rand, $showPercent);
         }
 
         $output .= '</div>';
@@ -70,13 +72,13 @@ class Shortcode
         return $output;
     }
 
-    private function renderChart($data, $subject, $degree, $rand) {
+    private function renderChart($data, $subject, $degree, $rand, $showPercent) {
 
         $output = '';
 
         $legend = '<ul class="chart-legend">';
         foreach ($data as $item) {
-            $legend .= '<li style="--share-color: ' . $item[ 'color' ] . '">' . $item[ 'share' ] . ' (' . number_format($item[ 'percent' ] * 100, 0) . '%)</li>';
+            $legend .= '<li style="--share-color: ' . $item[ 'color' ] . '">' . $item[ 'share' ] . ($showPercent ? ' (' . number_format($item[ 'percent' ] * 100, 0) . '%)' : '') . '</li>';
         }
         $legend .= '</ul>';
 

@@ -19,6 +19,10 @@
 		"format": {
 			"type": "string",
 			"default": "chart"
+		},
+		"showPercent": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"supports": {

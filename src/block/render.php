@@ -3,7 +3,8 @@
 // Compatibility with Shortcode
 $attributes['subject'] = $attributes['selectedSubject'] ?? '';
 $attributes['degree'] = $attributes['selectedDegree'] ?? '';
-$attributes['format'] = $attributes['layout'] ?? 'chart';
+$attributes['format'] = $attributes['format'] ?? 'chart';
+$attributes['percent'] = $attributes['showPercent'] ?? '0';
 
 echo (new Fau\DegreeProgram\Shares\Shortcode)->shortcodeOutput($attributes);
 

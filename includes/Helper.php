@@ -12,7 +12,7 @@ class Helper {
      * Converted to PHP and adapted for our needs :-)
      */
     public static function drawPieChart($svgID, $data) {
-        $svg = '<svg height="300" width="300" viewBox="0 0 512 512" class="chart" id="' . $svgID . '" aria-hidden="true">';
+        $svg = '<svg height="300" width="300" viewBox="0 0 300 300" class="chart" id="' . $svgID . '" aria-hidden="true">';
         $total = array_sum(array_column($data, 'percent'));
         $radiansPerUnit = (2 * pi()) / $total;
         $startAngleRadians = 0 - pi() / 2;
@@ -21,11 +21,11 @@ class Helper {
             $sweepAngleRadians = $item[ 'percent' ] * $radiansPerUnit;
             $sliceData = [
                 'id' => $svgID,
-                'centreX' => 256,
-                'centreY' => 256,
+                'centreX' => 150,
+                'centreY' => 150,
                 'startAngleRadians' => $startAngleRadians,
                 'sweepAngleRadians' => $sweepAngleRadians,
-                'radius' => 250,
+                'radius' => 150,
                 'fillColour' => $item[ 'color' ],
                 'strokeColour' => '#ffffff',
                 'label' => $item[ 'share' ],
@@ -35,7 +35,7 @@ class Helper {
             $startAngleRadians += $sweepAngleRadians;
         }
 
-        $svg .= '<circle r="100" cx="256" cy="256" fill="#FFFFFF" />';
+        $svg .= '<circle r="60" cx="150" cy="150" fill="#FFFFFF" />';
         $svg .= '</svg>';
 
         return $svg;
@@ -59,14 +59,15 @@ class Helper {
         // close path
         $d .= "Z";
 
+        $percentRounded = round($settings['percent'] * 100);
         $arc = "<path"
             . ' d="' . $d . '"'
             . ' fill="' . $settings['fillColour'].'"'
             . ' style="stroke:' . $settings['strokeColour'] . ';"'
             . ' class="chart-share"'
             . ' data-label="' . $settings['label'] . '"'
-            . ' data-percent="' . round($settings['percent'] * 100) . '%"'
-            . ' title="' . $settings['label'] . ": " . $settings['percent'] . '%"'
+            . ' data-percent="' . $percentRounded . '%"'
+            . ' title="' . $settings['label'] . ": " . $percentRounded . '%"'
             . '></path>';
 
         return $arc;
