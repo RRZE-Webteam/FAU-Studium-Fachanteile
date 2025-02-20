@@ -39,7 +39,7 @@ add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
  * Einbindung der Sprachdateien.
  */
 function loadTextDomain() {
-    load_plugin_textdomain('rrze-downloads', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
+    load_plugin_textdomain('fau-degree-program-shares', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
 }
 
 /**
