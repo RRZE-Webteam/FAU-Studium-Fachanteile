@@ -1,4 +1,4 @@
-.wp-admin #fau-degree-program-shares label {
+.wp-admin #fau-degree-program-shares label.block-label {
   display: block;
   padding: 0.2em 0;
 }

@@ -2,8 +2,6 @@
 
 namespace Fau\DegreeProgram\Shares;
 
-use Mpdf\Http\Exception\ForbiddenRequestException;
-
 class Metabox
 {
     public function __construct() {
@@ -16,7 +14,10 @@ class Metabox
             [$this, 'cmb_display_meta_box'],
             ['post', 'page'],
             'side',
-            'default'
+            'default',
+            array(
+                '__back_compat_meta_box' => true,
+            )
 
         );
 
@@ -28,7 +29,7 @@ class Metabox
         $degreesRaw = $api->getDegrees();
         $subjectsRaw = $api->getSubjects();
 
-        $html = '<p><label for="fau-degree-programm-shares-degree-select">' . __('Degree', 'fau-degree-program-shares') . '</label>';
+        $html = '<p><label class="block-label" for="fau-degree-programm-shares-degree-select">' . __('Degree', 'fau-degree-program-shares') . '</label>';
         $html .= '<select id="fau-degree-programm-shares-degree-select">'
                  . '<option value="0">' . __('-- Select --', 'fau-degree-program-shares') . '</option>';
         foreach ( $degreesRaw as $degree ) {
@@ -36,13 +37,16 @@ class Metabox
         }
         $html .= '</select></p>';
 
-        $html .= '<p><label for="fau-degree-programm-shares-subject-select">' . __('Subject', 'fau-degree-program-shares') . '</label>';
+        $html .= '<p><label class="block-label" for="fau-degree-programm-shares-subject-select">' . __('Subject', 'fau-degree-program-shares') . '</label>';
         $html .= '<select id="fau-degree-programm-shares-subject-select">'
                  . '<option value="0">' . __('-- Select --', 'fau-degree-program-shares') . '</option>';
         foreach ( $subjectsRaw as $subject ) {
             $html .= '<option value="' . $subject['campo_key'] . '">' . $subject['name'] . '</option>';
         }
         $html .= '</select></p>';
+
+        $html .= '<p><input type="checkbox" id="fau-degree-programm-shares-percent-check" name="percent" value="1" checked="checked" />'
+                 . '<label for="fau-degree-programm-shares-percent-check">' . __('Show Percent Values', 'fau-degree-program-shares') . '</label></p>';
 
         $html .= '<p>'
                  . '<code class="fau-degree-programm-shares-shortcode-template">[fachanteile abschluss="" fach=""]</code>'
