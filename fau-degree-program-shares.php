@@ -33,15 +33,21 @@ require_once 'vendor/autoload.php';
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
-// Load the plugin's text domain for localization.
-add_action('plugins_loaded', fn() => load_plugin_textdomain('fau-degree-program-shares', false, dirname(plugin_basename(__FILE__)) . '/languages'));
-
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+
+/**
+ * Einbindung der Sprachdateien.
+ */
+function loadTextDomain() {
+    load_plugin_textdomain('rrze-downloads', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
+}
 
 /**
  * Activation callback function.
  */
-function activation() {}
+function activation() {
+    loadTextDomain();
+}
 
 /**
  * Deactivation callback function.
@@ -112,6 +118,8 @@ function systemRequirements(): string
  */
 function loaded()
 {
+    loadTextDomain();
+
     // Trigger the 'loaded' method of the main plugin instance.
     plugin()->loaded();
 
