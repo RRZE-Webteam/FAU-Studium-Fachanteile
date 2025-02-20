@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FAU Studium Fachanteile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 10:47+0000\n"
+"POT-Creation-Date: 2025-02-20 12:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,8 @@ msgstr ""
 "X-Loco-Version: 2.7.1; wp-6.7.1\n"
 "X-Domain: fau-degree-program-shares"
 
-#: includes/Metabox.php:33 includes/Metabox.php:41
+#: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:33
+#: includes/Metabox.php:41
 msgid "-- Select --"
 msgstr ""
 
@@ -24,11 +25,25 @@ msgstr ""
 msgid "API"
 msgstr ""
 
+#: build/block/block.json:1 src/block/block.json:1
+msgctxt "block description"
+msgid "FAU-Studium Fachanteile"
+msgstr ""
+
+#: build/block/block.json:1 src/block/block.json:1
+msgctxt "block title"
+msgid "FAU-Studium Fachanteile"
+msgstr ""
+
+#: src/block/edit.js:56
+msgid "Chart"
+msgstr ""
+
 #: includes/Metabox.php:51
 msgid "Copy"
 msgstr ""
 
-#: includes/Metabox.php:31
+#: includes/Metabox.php:31 src/block/edit.js:33
 msgid "Degree"
 msgstr ""
 
@@ -44,6 +59,10 @@ msgstr ""
 msgid "FAU Studium Fachanteile"
 msgstr ""
 
+#: src/block/edit.js:51
+msgid "Format"
+msgstr ""
+
 #. Author URI of the plugin
 msgid "https://blogs.fau.de/webworking/"
 msgstr ""
@@ -53,7 +72,7 @@ msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 msgstr ""
 
 #. 1: The plugin name, 2: The error string.
-#: fau-degree-program-shares.php:136
+#: fau-degree-program-shares.php:137
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr ""
@@ -66,20 +85,28 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/Shortcode.php:59
+#: includes/Shortcode.php:60
 msgid "Share"
+msgstr ""
+
+#: src/block/edit.js:62
+msgid "Show Percent Values"
 msgstr ""
 
 #: includes/Metabox.php:15
 msgid "Study Shares Wizard"
 msgstr ""
 
-#: includes/Shortcode.php:58 includes/Metabox.php:39
+#: includes/Shortcode.php:59 includes/Metabox.php:39 src/block/edit.js:42
 msgid "Subject"
 msgstr ""
 
+#: src/block/edit.js:57
+msgid "Table"
+msgstr ""
+
 #. 1: Server PHP version number, 2: Required PHP version number.
-#: fau-degree-program-shares.php:97
+#: fau-degree-program-shares.php:98
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
@@ -87,7 +114,7 @@ msgid ""
 msgstr ""
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
-#: fau-degree-program-shares.php:89
+#: fau-degree-program-shares.php:90
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "

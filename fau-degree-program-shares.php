@@ -33,10 +33,10 @@ require_once 'vendor/autoload.php';
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
-add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
-
 // Load the plugin's text domain for localization.
-add_action('init', fn() => load_plugin_textdomain('fau-degree-program-shares', false, dirname(plugin_basename(__FILE__)) . '/languages'));
+add_action('plugins_loaded', fn() => load_plugin_textdomain('fau-degree-program-shares', false, dirname(plugin_basename(__FILE__)) . '/languages'));
+
+add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
 
 /**
  * Activation callback function.
@@ -154,6 +154,6 @@ function loaded()
 
 function createBlock(): void {
     register_block_type( __DIR__ . '/build/block' );
-    $script_handle_speaker = generate_block_asset_handle( 'fau-degree-program/shares', 'editorScript' );
-    wp_set_script_translations( $script_handle_speaker, 'fau-degree-program-shares', plugin_dir_path( __FILE__ ) . 'languages' );
+    $script_handle = generate_block_asset_handle( 'fau-degree-program/shares', 'editorScript' );
+    wp_set_script_translations( $script_handle, 'fau-degree-program-shares', plugin_dir_path( __FILE__ ) . 'languages' );
 }

@@ -10,13 +10,13 @@ import ServerSideRender from "@wordpress/server-side-render";
 const Edit = (props) => {
 
     const { attributes, setAttributes } = props;
-    const { selectedDegree, selectedSubject } = attributes;
+    const { selectedDegree, selectedSubject, format, showPercent} = attributes;
 
     // Zustand für die dynamischen Optionen
     const [degree, setDegree] = useState([]);
     const [subject, setSubject] = useState([]);
-    const [format, setFormat] = useState( attributes.format || 'chart' );
-    const [ showPercent, setShowPercent ] = useState( attributes.percent || false );
+    const [setFormat] = useState(['chart']);
+    const [ setShowPercent ] = useState( true );
 
     useEffect(() => {
         if (window.sharesBlockData) {
@@ -49,7 +49,6 @@ const Edit = (props) => {
                     />
                     <RadioGroup
                         label={__("Format", "fau-degree-program-shares")}
-                        //onChange={ setFormat }
                         onChange={ (value) => {
                             setAttributes({ format: value });
                         } }
@@ -57,22 +56,16 @@ const Edit = (props) => {
                         <Radio __next40pxDefaultSize value="chart">{__("Chart", "fau-degree-program-shares")}</Radio>
                         <Radio __next40pxDefaultSize value="table">{__("Table", "fau-degree-program-shares")}</Radio>
                     </RadioGroup>
-                    <ToggleControl
-                        __nextHasNoMarginBottom
-                        label={__("Show Percent Values", "fau-degree-program-shares")}
-                        /*help={
-                            showPercent
-                                ? 'Has fixed background.'
-                                : 'No fixed background.'
-                        }*/
-                        checked={ showPercent }
-                        /*onChange={ (value) => {
-                            setAttributes({showPercent: value} );
-                        } }*/
-                        onChange={ (newValue) => {
-                            setShowPercent( newValue );
-                        } }
-                    />
+                    {format === "chart" && (
+                        <ToggleControl
+                            //__nextHasNoMarginBottom
+                            label={__("Show Percent Values", "fau-degree-program-shares")}
+                            checked={ showPercent }
+                            onChange={ (value) => {
+                                setAttributes({ showPercent: value });
+                            } }
+                        />
+                    )}
                 </>
             </InspectorControls>
             <ServerSideRender
