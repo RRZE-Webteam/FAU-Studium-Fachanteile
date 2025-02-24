@@ -1,7 +1,7 @@
 {
   "name": "fau-studium-fachanteile",
   "version": "1.0.0",
-  "main": "build/index.js",
+  "main": "build/block/index.js",
   "scripts": {
     "build": "wp-scripts build",
     "format": "wp-scripts format",

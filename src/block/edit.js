@@ -1,6 +1,6 @@
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
-import { SelectControl, __experimentalRadio as Radio, __experimentalRadioGroup as RadioGroup, ToggleControl } from '@wordpress/components';
+import { PanelBody, SelectControl, __experimentalRadio as Radio, __experimentalRadioGroup as RadioGroup, ToggleControl } from '@wordpress/components';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 
 import './editor.scss';
@@ -29,7 +29,7 @@ const Edit = (props) => {
     return (
         <div {...useBlockProps()}>
             <InspectorControls>
-                <>
+                <PanelBody>
                     <SelectControl
                         label={__("Degree", "fau-degree-program-shares")}
                         value={selectedDegree}
@@ -75,7 +75,7 @@ const Edit = (props) => {
                             setAttributes({ showTitle: value });
                         } }
                     />
-                </>
+                </PanelBody>
             </InspectorControls>
             <ServerSideRender
                 block="fau-degree-program/shares"

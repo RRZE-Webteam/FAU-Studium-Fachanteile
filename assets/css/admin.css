@@ -5,10 +5,7 @@
 .wp-admin #fau-degree-program-shares select {
   max-width: 90%;
 }
-.wp-admin .css-0.e19lxcc00 {
-  padding: 0 16px 16px;
-}
-.wp-admin .css-0.e19lxcc00 .components-button-group {
+.wp-admin .block-editor-block-inspector .css-0.e19lxcc00 .components-button-group {
   margin-bottom: 16px;
 }
 
