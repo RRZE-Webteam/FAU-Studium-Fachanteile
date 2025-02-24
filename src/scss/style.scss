@@ -5,7 +5,12 @@
     row-gap: 1em;
     column-gap: 2em;
     align-items: flex-start;
+    margin-top: 2em;
     margin-bottom: 2em;
+    .chart-title {
+        width: 100%;
+        padding: 0;
+    }
     svg.chart {
         &:hover {
             //stroke-width: 20px;

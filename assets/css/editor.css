@@ -11,7 +11,12 @@
   row-gap: 1em;
   column-gap: 2em;
   align-items: flex-start;
+  margin-top: 2em;
   margin-bottom: 2em;
+}
+.fau-subject-shares .chart-title {
+  width: 100%;
+  padding: 0;
 }
 .fau-subject-shares svg.chart {
   /* TODO:

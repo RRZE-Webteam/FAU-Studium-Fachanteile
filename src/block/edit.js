@@ -10,13 +10,14 @@ import ServerSideRender from "@wordpress/server-side-render";
 const Edit = (props) => {
 
     const { attributes, setAttributes } = props;
-    const { selectedDegree, selectedSubject, format, showPercent} = attributes;
+    const { selectedDegree, selectedSubject, format, showPercent, showTitle} = attributes;
 
     // Zustand für die dynamischen Optionen
     const [degree, setDegree] = useState([]);
     const [subject, setSubject] = useState([]);
     const [setFormat] = useState(['chart']);
     const [ setShowPercent ] = useState( true );
+    const [ setShowTitle ] = useState( false );
 
     useEffect(() => {
         if (window.sharesBlockData) {
@@ -66,6 +67,14 @@ const Edit = (props) => {
                             } }
                         />
                     )}
+                    <ToggleControl
+                        //__nextHasNoMarginBottom
+                        label={__("Show Title", "fau-degree-program-shares")}
+                        checked={ showTitle }
+                        onChange={ (value) => {
+                            setAttributes({ showTitle: value });
+                        } }
+                    />
                 </>
             </InspectorControls>
             <ServerSideRender

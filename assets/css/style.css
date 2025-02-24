@@ -8,6 +8,10 @@
   align-items: flex-start;
   margin-bottom: 2em;
 }
+.fau-subject-shares .chart-title {
+  width: 100%;
+  padding: 0;
+}
 .fau-subject-shares svg.chart {
   /* TODO:
       - flex-wrap abhängig von Box-Größe

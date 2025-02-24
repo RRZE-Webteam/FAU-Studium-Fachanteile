@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FAU Studium Fachanteile\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-06 11:17+0000\n"
-"PO-Revision-Date: 2025-02-20 12:31+0000\n"
+"PO-Revision-Date: 2025-02-24 09:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Loco-Template: languages/fau-degree-program-shares-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON"
 
-#: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:33
-#: includes/Metabox.php:41
+#: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:34
+#: includes/Metabox.php:42
 msgid "-- Select --"
 msgstr "-- Auswählen --"
 
@@ -38,15 +38,15 @@ msgid "FAU-Studium Fachanteile"
 msgstr ""
 "FAU-Studium Fachanteile\n"
 
-#: src/block/edit.js:56
+#: src/block/edit.js:57
 msgid "Chart"
 msgstr "Diagramm"
 
-#: includes/Metabox.php:51
+#: includes/Metabox.php:55
 msgid "Copy"
 msgstr "Kopieren"
 
-#: includes/Metabox.php:31 src/block/edit.js:33
+#: includes/Metabox.php:32 src/block/edit.js:34
 msgid "Degree"
 msgstr "Abschluss"
 
@@ -62,7 +62,7 @@ msgstr "Studienfachanteile als Kreisdiagramm anzeigen"
 msgid "FAU Studium Fachanteile"
 msgstr "FAU Studium Fachanteile"
 
-#: src/block/edit.js:51
+#: src/block/edit.js:52
 msgid "Format"
 msgstr "Format"
 
@@ -75,7 +75,7 @@ msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 msgstr "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 
 #. 1: The plugin name, 2: The error string.
-#: fau-degree-program-shares.php:137
+#: fau-degree-program-shares.php:144
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr "Plugins: %1$s: %2$s"
@@ -88,28 +88,32 @@ msgstr "RRZE-Webteam"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/Shortcode.php:60
+#: includes/Shortcode.php:70
 msgid "Share"
 msgstr "Anteil"
 
-#: src/block/edit.js:62
+#: includes/Metabox.php:49 src/block/edit.js:63
 msgid "Show Percent Values"
 msgstr "Prozentwerte anzeigen"
 
-#: includes/Metabox.php:15
+#: src/block/edit.js:72
+msgid "Show Title"
+msgstr "Titel anzeigen"
+
+#: includes/Metabox.php:13
 msgid "Study Shares Wizard"
 msgstr "Shortcode Studien-Fachanteile"
 
-#: includes/Shortcode.php:59 includes/Metabox.php:39 src/block/edit.js:42
+#: includes/Shortcode.php:69 includes/Metabox.php:40 src/block/edit.js:43
 msgid "Subject"
 msgstr "Fach"
 
-#: src/block/edit.js:57
+#: src/block/edit.js:58
 msgid "Table"
 msgstr "Tabelle"
 
 #. 1: Server PHP version number, 2: Required PHP version number.
-#: fau-degree-program-shares.php:98
+#: fau-degree-program-shares.php:103
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
@@ -119,7 +123,7 @@ msgstr ""
 "Version %2$s."
 
 #. 1: Server WordPress version number, 2: Required WordPress version number.
-#: fau-degree-program-shares.php:90
+#: fau-degree-program-shares.php:95
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "

@@ -19,12 +19,14 @@ class Shortcode
              'fach' => '',
              'abschluss' => '',
              'format' => 'chart',
-             'percent' => '1'],
+             'percent' => '1',
+             'title' => ''],
             $atts);
         $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];
         $degree = $args['degree'] != '' ? (int)$args['degree'] : (int)$args['abschluss'];
         $format = in_array($args['format'], array('chart', 'table')) ? $args['format'] : 'chart';
         $showPercent = $args['percent'] == '1';
+        $showTitle = $args['title'] == '1';
 
         if ($subject == 0 || $degree == 0) {
             return '';
@@ -33,10 +35,18 @@ class Shortcode
         $api = new API();
         $data = $api->getShares($subject, $degree);
 
+        $title = '';
+        if ($showTitle) {
+            $subjectName = $api->getSubjects($subject);
+            $degreeName = $api->getDegrees($degree);
+            $title = '<h3 class="chart-title">' . $degreeName[0]['name'] . ' ' . $subjectName[0]['name'] . '</h3>';
+        }
+
         if (empty($data)) return '';
 
         $rand = rand(0, 9999);
-        $output = '<div class="fau-subject-shares" id="fau-subject-shares-' . $rand . '">';
+        $output = '<div class="fau-subject-shares" id="fau-subject-shares-' . $rand . '">'
+            . $title;
 
         if ($format == 'table') {
             $output .= $this->renderTable($data);
