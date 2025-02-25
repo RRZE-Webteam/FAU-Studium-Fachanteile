@@ -45,7 +45,10 @@ class Metabox
         }
         $html .= '</select></p>';
 
-        $html .= '<p><input type="checkbox" id="fau-degree-programm-shares-percent-check" name="percent" value="1" checked="checked" />'
+        $html .= '<p><input type="checkbox" id="fau-degree-programm-shares-title-check" name="title" value="1" />'
+                 . '<label for="fau-degree-programm-shares-title-check">' . __('Show Title', 'fau-degree-program-shares') . '</label></p>';
+
+        $html .= '<p><input type="checkbox" id="fau-degree-programm-shares-percent-check" name="percent" value="1" />'
                  . '<label for="fau-degree-programm-shares-percent-check">' . __('Show Percent Values', 'fau-degree-program-shares') . '</label></p>';
 
         $html .= '<p>'

@@ -16,7 +16,7 @@ const Edit = (props) => {
     const [degree, setDegree] = useState([]);
     const [subject, setSubject] = useState([]);
     const [setFormat] = useState(['chart']);
-    const [ setShowPercent ] = useState( true );
+    const [ setShowPercent ] = useState( false );
     const [ setShowTitle ] = useState( false );
 
     useEffect(() => {

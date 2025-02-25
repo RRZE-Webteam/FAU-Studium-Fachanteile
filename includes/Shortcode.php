@@ -19,7 +19,7 @@ class Shortcode
              'fach' => '',
              'abschluss' => '',
              'format' => 'chart',
-             'percent' => '1',
+             'percent' => '',
              'title' => ''],
             $atts);
         $subject = $args['subject'] != '' ? (int)$args['subject'] : (int)$args['fach'];

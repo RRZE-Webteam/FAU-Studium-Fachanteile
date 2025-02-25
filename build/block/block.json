@@ -22,7 +22,7 @@
     },
     "showPercent": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "showTitle": {
       "type": "boolean",
