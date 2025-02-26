@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-06 11:17+0000\n"
-"PO-Revision-Date: 2025-02-24 09:56+0000\n"
+"PO-Revision-Date: 2025-02-26 12:00+0000\n"
 "Language: de_DE_formal\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
@@ -18,9 +18,7 @@ msgstr ""
 "X-Loco-Template: languages/fau-degree-program-shares-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON\n"
 
-#: includes/Main.php:53
-#: includes/Main.php:57
-#: includes/Metabox.php:34
+#: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:34
 #: includes/Metabox.php:42
 msgid "-- Select --"
 msgstr "-- Auswählen --"
@@ -29,26 +27,27 @@ msgstr "-- Auswählen --"
 msgid "API"
 msgstr "API"
 
-#: build/block/block.json:1
-#: src/block/block.json:1
+#: build/block/block.json
 msgctxt "block description"
 msgid "FAU-Studium Fachanteile"
 msgstr "FAU-Studium Fachanteile"
 
-#: build/block/block.json:1
-#: src/block/block.json:1
+#: build/block/block.json
 msgctxt "block title"
 msgid "FAU-Studium Fachanteile"
 msgstr ""
 "FAU-Studium Fachanteile\n"
-""
 
-#: includes/Metabox.php:55
+#: build/block/index.js:105 build/block/index.js:57 src/block/edit.js
+msgid "Chart"
+msgstr "Diagramm"
+
+#: includes/Metabox.php:58
 msgid "Copy"
 msgstr "Kopieren"
 
-#: includes/Metabox.php:32
-#: src/block/edit.js:34
+#: includes/Metabox.php:32 build/block/index.js:75 build/block/index.js:34
+#: src/block/edit.js
 msgid "Degree"
 msgstr "Abschluss"
 
@@ -57,33 +56,40 @@ msgid "DIP Edu API Key"
 msgstr "DIP Edu API-Key"
 
 #. Description of the plugin
+#: fau-degree-program-shares.php
 msgid "Display study subject shares as pie charts"
 msgstr "Studienfachanteile als Kreisdiagramm anzeigen"
 
-#. Name of the plugin
+#. Plugin Name of the plugin
+#: fau-degree-program-shares.php
 msgid "FAU Studium Fachanteile"
 msgstr "FAU Studium Fachanteile"
 
+#: build/block/index.js:95 build/block/index.js:52 src/block/edit.js
+msgid "Format"
+msgstr "Format"
+
 #. Author URI of the plugin
+#: fau-degree-program-shares.php
 msgid "https://blogs.fau.de/webworking/"
 msgstr "https://blogs.fau.de/webworking/"
 
-#. URI of the plugin
+#. Plugin URI of the plugin
+#: fau-degree-program-shares.php
 msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 msgstr "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 
-#. 1: The plugin name, 2: The error string.
-#: fau-degree-program-shares.php:144
-#, php-format
+#. translators: 1: The plugin name, 2: The error string.
+#: fau-degree-program-shares.php:142
 msgid "Plugins: %1$s: %2$s"
 msgstr "Plugins: %1$s: %2$s"
 
 #. Author of the plugin
+#: fau-degree-program-shares.php
 msgid "RRZE-Webteam"
 msgstr "RRZE-Webteam"
 
-#: includes/Settings.php:24
-#: includes/Settings.php:35
+#: includes/Settings.php:24 includes/Settings.php:35
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -91,29 +97,43 @@ msgstr "Einstellungen"
 msgid "Share"
 msgstr "Anteil"
 
-#: includes/Metabox.php:49
-#: src/block/edit.js:63
+#: includes/Metabox.php:52 build/block/index.js:114 build/block/index.js:63
+#: src/block/edit.js
 msgid "Show Percent Values"
 msgstr "Prozentwerte anzeigen"
+
+#: includes/Metabox.php:49 build/block/index.js:124 build/block/index.js:72
+#: src/block/edit.js
+msgid "Show Title"
+msgstr "Titel anzeigen"
 
 #: includes/Metabox.php:13
 msgid "Study Shares Wizard"
 msgstr "Shortcode Studien-Fachanteile"
 
-#: includes/Shortcode.php:69
-#: includes/Metabox.php:40
-#: src/block/edit.js:43
+#: includes/Metabox.php:40 includes/Shortcode.php:69 build/block/index.js:85
+#: build/block/index.js:43 src/block/edit.js
 msgid "Subject"
 msgstr "Fach"
 
-#. 1: Server PHP version number, 2: Required PHP version number.
-#: fau-degree-program-shares.php:103
-#, php-format
-msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
-msgstr "Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP Version %2$s."
+#: build/block/index.js:109 build/block/index.js:58 src/block/edit.js
+msgid "Table"
+msgstr "Tabelle"
 
-#. 1: Server WordPress version number, 2: Required WordPress version number.
+#. translators: 1: Server PHP version number, 2: Required PHP version number.
+#: fau-degree-program-shares.php:103
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
+"Version %2$s."
+
+#. translators: 1: Server WordPress version number, 2: Required WordPress version number.
 #: fau-degree-program-shares.php:95
-#, php-format
-msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
-msgstr "Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens WordPress Version %2$s."
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+"Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
+"WordPress Version %2$s."
