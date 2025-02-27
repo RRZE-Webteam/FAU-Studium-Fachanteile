@@ -4,7 +4,7 @@
   "name": "fau-degree-program/shares",
   "version": "1.0.0",
   "title": "FAU-Studium Fachanteile",
-  "category": "rrze-plugins",
+  "category": "fau",
   "description": "FAU-Studium Fachanteile",
   "example": {},
   "attributes": {

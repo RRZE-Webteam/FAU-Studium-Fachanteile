@@ -165,3 +165,32 @@ function createBlock(): void {
     $script_handle = generate_block_asset_handle( 'fau-degree-program/shares', 'editorScript' );
     wp_set_script_translations( $script_handle, 'fau-degree-program-shares', plugin_dir_path( __FILE__ ) . 'languages' );
 }
+
+/**
+ * Adds custom block category if not already present.
+ *
+ * @param array   $categories Existing block categories.
+ * @param WP_Post $post       Current post object.
+ * @return array Modified block categories.
+ */
+function fau_block_category($categories, $post) {
+    // Check if there is already a FAU category present
+    foreach ($categories as $category) {
+        if (isset($category['slug']) && $category['slug'] === 'fau') {
+            return $categories;
+        }
+    }
+
+    $custom_category = [
+        'slug'  => 'fau',
+        'title' => __('FAU', 'fau-degree-program-shares'),
+    ];
+
+    // Add FAU to the end of the categories array
+    $categories[] = $custom_category;
+
+    return $categories;
+}
+
+// Register the Custom FAU Category, if it is not set by another plugin
+add_filter('block_categories_all', __NAMESPACE__ . '\fau_block_category', 10, 2);
