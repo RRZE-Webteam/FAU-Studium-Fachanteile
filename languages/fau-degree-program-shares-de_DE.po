@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FAU Studium Fachanteile\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-06 11:17+0000\n"
+"PO-Revision-Date: 2025-02-26 09:49+0000\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Domain: fau-degree-program-shares\n"
+
+#: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:34
+#: includes/Metabox.php:42
+msgid "-- Select --"
+msgstr "-- Auswählen --"
+
+#: includes/Settings.php:52
+msgid "API"
+msgstr "API"
+
+#: build/block/block.json
+msgctxt "block description"
+msgid "FAU-Studium Fachanteile"
+msgstr "FAU-Studium Fachanteile"
+
+#: build/block/block.json
+msgctxt "block title"
+msgid "FAU-Studium Fachanteile"
+msgstr ""
+"FAU-Studium Fachanteile\n"
+
+#: build/block/index.js:105 build/block/index.js:57
+msgid "Chart"
+msgstr "Diagramm"
+
+#: includes/Metabox.php:58
+msgid "Copy"
+msgstr "Kopieren"
+
+#: includes/Metabox.php:32 build/block/index.js:75 build/block/index.js:34
+msgid "Degree"
+msgstr "Abschluss"
+
+#: includes/Settings.php:59
+msgid "DIP Edu API Key"
+msgstr "DIP Edu API-Key"
+
+#. Description of the plugin
+#: fau-degree-program-shares.php
+msgid "Display study subject shares as pie charts"
+msgstr "Studienfachanteile als Kreisdiagramm anzeigen"
+
+#. Plugin Name of the plugin
+#: fau-degree-program-shares.php
+msgid "FAU Studium Fachanteile"
+msgstr "FAU Studium Fachanteile"
+
+#: build/block/index.js:95 build/block/index.js:52
+msgid "Format"
+msgstr "Format"
+
+#. Author URI of the plugin
+#: fau-degree-program-shares.php
+msgid "https://blogs.fau.de/webworking/"
+msgstr "https://blogs.fau.de/webworking/"
+
+#. Plugin URI of the plugin
+#: fau-degree-program-shares.php
+msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
+msgstr "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
+
+#. translators: 1: The plugin name, 2: The error string.
+#: fau-degree-program-shares.php:142
+msgid "Plugins: %1$s: %2$s"
+msgstr "Plugins: %1$s: %2$s"
+
+#. Author of the plugin
+#: fau-degree-program-shares.php
+msgid "RRZE-Webteam"
+msgstr "RRZE-Webteam"
+
+#: includes/Settings.php:24 includes/Settings.php:35
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/Shortcode.php:70
+msgid "Share"
+msgstr "Anteil"
+
+#: includes/Metabox.php:52 build/block/index.js:114 build/block/index.js:63
+msgid "Show Percent Values"
+msgstr "Prozentwerte anzeigen"
+
+#: includes/Metabox.php:49 build/block/index.js:124 build/block/index.js:72
+msgid "Show Title"
+msgstr "Titel anzeigen"
+
+#: includes/Metabox.php:13
+msgid "Study Shares Wizard"
+msgstr "Shortcode Studien-Fachanteile"
+
+#: includes/Metabox.php:40 includes/Shortcode.php:69 build/block/index.js:85
+#: build/block/index.js:43
+msgid "Subject"
+msgstr "Fach"
+
+#: build/block/index.js:109 build/block/index.js:58
+msgid "Table"
+msgstr "Tabelle"
+
+#. translators: 1: Server PHP version number, 2: Required PHP version number.
+#: fau-degree-program-shares.php:103
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
+"Version %2$s."
+
+#. translators: 1: Server WordPress version number, 2: Required WordPress version number.
+#: fau-degree-program-shares.php:95
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+"Auf dem Server läuft WordPress Version %1$s. Das Plugin benötigt mindestens "
+"WordPress Version %2$s."

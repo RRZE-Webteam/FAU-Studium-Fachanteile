@@ -1,0 +1,61 @@
+@charset "UTF-8";
+.fau-subject-shares {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  column-gap: 2em;
+  align-items: flex-start;
+  margin-bottom: 2em;
+}
+.fau-subject-shares .chart-title {
+  width: 100%;
+  padding: 0;
+}
+.fau-subject-shares svg.chart {
+  /* TODO:
+      - flex-wrap abhängig von Box-Größe
+      - hover-Effekt
+   */
+}
+.fau-subject-shares .tooltip {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  background: #000;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font: normal 14px/21px sans-serif;
+  padding: 3px 10px;
+  border-radius: 3px;
+  max-width: 240px;
+}
+.fau-subject-shares .tooltip .tooltip-label {
+  font-weight: bold;
+}
+.fau-subject-shares ul.chart-legend {
+  margin: 0 0 1em;
+  padding: 1em;
+  border: 1px solid var(--color-ContentBorders, #dfe6ec);
+  width: auto;
+}
+.fau-subject-shares ul.chart-legend li {
+  list-style-type: none;
+}
+.fau-subject-shares ul.chart-legend li:before {
+  display: inline-block;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 100%;
+  background-color: var(--share-color);
+  margin-right: 0.5em;
+  border: 1px solid grey;
+  position: relative;
+  top: 0.2em;
+}
+.fau-subject-shares table.shares-table {
+  width: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
