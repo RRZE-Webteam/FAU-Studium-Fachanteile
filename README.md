@@ -28,9 +28,8 @@ Dieses Plugin kann via Shortcodes aber auch mit dem Block Editor verwendet werde
 Syntax Beispiel:
 
 
-```
-[fachanteile subject="605" degree="55"]
-``
+`[fachanteile subject="605" degree="55"]`
+
 
 
 Mögliche Parameter des Shortcodes:
