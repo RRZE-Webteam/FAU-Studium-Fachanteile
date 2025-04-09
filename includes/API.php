@@ -104,22 +104,27 @@ class API
         }
     }
 
-    private function getApiKey() {
-        $apiKey = '';
-
-        $apiKey = self::getMultisiteApiKey();
-
-        if ($apiKey == '') {
-            $options = get_option('fau-degree-program-shares');
-            $apiKey = $options['dip-edu-api-key'] ?? '';
+  
+    
+    
+    public static function isUsingNetworkKey(): bool  {
+        if (is_multisite()) {
+            $settingsOptions = get_site_option('rrze_settings');
+            if (!empty($settingsOptions->plugins->dip_edu_api_key)) {
+                return true;
+            }
         }
-
-        return $apiKey;
+        return false;
     }
 
-    private function getMultisiteApiKey() {
-        return method_exists(\RRZE\Settings\Helper::class, 'getEduApiKey')
-            ? \RRZE\Settings\Helper::getEduApiKey()
-            : '';
+    public static function getApiKey()  {
+        if (self::isUsingNetworkKey()) {
+            $settingsOptions = get_site_option('rrze_settings');
+            return $settingsOptions->plugins->dip_edu_api_key;
+        } else {
+            $options = get_option('fau-degree-program-shares');
+            return isset($options['dip-edu-api-key']) ? $options['dip-edu-api-key'] : '';
+        }
     }
+    
 }
