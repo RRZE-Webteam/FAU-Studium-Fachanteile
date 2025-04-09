@@ -64,31 +64,42 @@ class API
         ];
 
         $query = array_merge($queryDefault, $query);
+        
 
         $transientName = 'fau-shares_'.hash('md5', $endpoint . '_'. implode('_', $query));
-
-        if ( false === ( $value = get_transient( $transientName ) ) ) {
+        if (( false === ( $value = get_transient( $transientName ) ) ) || (is_user_logged_in())) {
             $remaining = 999;
             $page = 1;
             $data = [];
             while ($remaining > 0) {
                 $query['page'] = $page;
                 $apiRequest = add_query_arg($query, $this->api . $endpoint);
+
                 $apiResponse = wp_remote_get($apiRequest, $args);
                 if ( is_array( $apiResponse ) && ! is_wp_error( $apiResponse ) && $apiResponse['response']['code'] == 200) {
-                    $body = json_decode($apiResponse['body'], true);
-                    if (!empty($body['data'])) {
-                        $data = array_merge($data, $body['data']);
+                    
+                    $body = wp_remote_retrieve_body($apiResponse);
+                    if (!empty($body)) {
+                        $thisdata = json_decode($body, true);
+                        if (!empty($thisdata) && (!empty($thisdata['data']))) {
+                            $data = array_merge($data, $thisdata['data']);
+                        }
+                        $remaining = $thisdata['pagination']['remaining'] ?? 0;
+                        $page ++;
+                    } else {
+                        $remaining = 0;
                     }
-                    $remaining = $body['pagination']['remaining'] ?? 0;
-                    $page ++;
                 } else {
                     $remaining = 0;
                 }
             }
-            set_transient( $transientName, $data, DAY_IN_SECONDS );
+            // Cache only for non logged in users and if data is not empty
+            if ((!is_user_logged_in()) && (!empty($data))) {
+                set_transient( $transientName, $data, DAY_IN_SECONDS );
+            }
             return $data;
         } else {
+            // return transient value
             return $value;
         }
     }

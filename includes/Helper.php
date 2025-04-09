@@ -12,33 +12,36 @@ class Helper {
      * Converted to PHP and adapted for our needs :-)
      */
     public static function drawPieChart($svgID, $data) {
-        $svg = '<svg height="300" width="300" viewBox="0 0 300 300" class="chart" id="' . $svgID . '" aria-hidden="true">';
         $total = array_sum(array_column($data, 'percent'));
-        $radiansPerUnit = (2 * pi()) / $total;
-        $startAngleRadians = 0 - pi() / 2;
+        if ($total > 0) {
+            $radiansPerUnit = (2 * pi()) / $total;
+            $startAngleRadians = 0 - pi() / 2;
 
-        foreach ($data as $item) {
-            $sweepAngleRadians = $item[ 'percent' ] * $radiansPerUnit;
-            $sliceData = [
-                'id' => $svgID,
-                'centreX' => 150,
-                'centreY' => 150,
-                'startAngleRadians' => $startAngleRadians,
-                'sweepAngleRadians' => $sweepAngleRadians,
-                'radius' => 150,
-                'fillColour' => $item[ 'color' ],
-                'strokeColour' => '#ffffff',
-                'label' => $item[ 'share' ],
-                'percent' => $item[ 'percent' ]
-            ];
-            $svg .= self::drawPieSlice($sliceData);
-            $startAngleRadians += $sweepAngleRadians;
+
+            $svg = '<svg height="300" width="300" viewBox="0 0 300 300" class="chart" id="' . $svgID . '" aria-hidden="true">';
+            foreach ($data as $item) {
+                $sweepAngleRadians = $item[ 'percent' ] * $radiansPerUnit;
+                $sliceData = [
+                    'id' => $svgID,
+                    'centreX' => 150,
+                    'centreY' => 150,
+                    'startAngleRadians' => $startAngleRadians,
+                    'sweepAngleRadians' => $sweepAngleRadians,
+                    'radius' => 150,
+                    'fillColour' => $item[ 'color' ],
+                    'strokeColour' => '#ffffff',
+                    'label' => $item[ 'share' ],
+                    'percent' => $item[ 'percent' ]
+                ];
+                $svg .= self::drawPieSlice($sliceData);
+                $startAngleRadians += $sweepAngleRadians;
+            }
+
+            $svg .= '<circle r="60" cx="150" cy="150" fill="#FFFFFF" />';
+            $svg .= '</svg>';
+            return $svg;
         }
-
-        $svg .= '<circle r="60" cx="150" cy="150" fill="#FFFFFF" />';
-        $svg .= '</svg>';
-
-        return $svg;
+        return '';
     }
 
     private static function drawPieSlice($settings) {
