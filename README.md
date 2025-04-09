@@ -19,7 +19,7 @@ Darstellung der Fachanteile in Studiengängen der FAU
 GNU General Public License (GPL) Version 3
 
 
-## Documentation
+## Dokumentation
 
 Dieses Plugin kann via Shortcodes aber auch mit dem Block Editor verwendet werden
 
@@ -27,17 +27,19 @@ Dieses Plugin kann via Shortcodes aber auch mit dem Block Editor verwendet werde
 
 Syntax Beispiel:
 
-´´´
+
+```
 [fachanteile subject="605" degree="55"]
-´´´
+``
+
 
 Mögliche Parameter des Shortcodes:
 
-* subject (alias fach) - Nummer des Faches gemäß Campo
-* degree (alias abschluss)  - Nummer des Abschlusses gemäß Campo
-* format -  Mögliche Werte: table, chart, Default: chart
-* percent - Option: Prozentwerte darstellen
-* title - Option: Titel des STudiengangs zeigen
+* `subject` (alias fach) - Nummer des Faches gemäß Campo
+* `degree` (alias abschluss)  - Nummer des Abschlusses gemäß Campo
+* `format` -  Mögliche Werte: table, chart, Default: chart
+* `percent` - Option: Prozentwerte darstellen
+* `title` - Option: Titel des STudiengangs zeigen
 
 
 ### Block 
@@ -47,8 +49,8 @@ den Abschluss und das Fach, für den Sie die Studienfachanteile als Grafik oder 
 
 Beispielsweise:
 
-Abschluss: Bachelor of Science
-Fach: International Business Studies
+- Abschluss: Bachelor of Science
+- Fach: International Business Studies
 
 
 Weiterführende DOkumentation auf https://www.wp.rrze.fau.de
