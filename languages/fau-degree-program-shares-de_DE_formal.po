@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-06 11:17+0000\n"
-"PO-Revision-Date: 2025-02-26 12:00+0000\n"
+"PO-Revision-Date: 2025-04-23 13:10+0000\n"
 "Language: de_DE_formal\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
@@ -18,27 +18,47 @@ msgstr ""
 "X-Loco-Template: languages/fau-degree-program-shares-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON\n"
 
+#: includes/Shortcode.php:60
+msgid "%sError%s: No data for degree %s (%s) and subject %s (%s)%s"
+msgstr "%sFehler%s: Keine Daten für Abschluss %s (%s) und Fach %s (%s)%s"
+
+#: includes/Shortcode.php:46
+msgid "%sError%s: Please specify a degree.%s"
+msgstr "%sFehler%s: Bitte geben Sie einen Abschluss an.%s"
+
+#: includes/Shortcode.php:43
+msgid "%sError%s: Please specify a subject.%s"
+msgstr "%sFehler%s: Bitte geben Sie ein Fach an.%s"
+
 #: includes/Main.php:53 includes/Main.php:57 includes/Metabox.php:34
 #: includes/Metabox.php:42
 msgid "-- Select --"
 msgstr "-- Auswählen --"
 
-#: includes/Settings.php:52
+#: includes/Settings.php:55
 msgid "API"
 msgstr "API"
 
-#: build/block/block.json
+#: includes/Settings.php:91
+msgid ""
+"API Key can be obtained from the API-Service at <a href=\"https://api.fau."
+"de/pub/v1/edu/__doc\">https://api.fau.de/pub/v1/edu/__doc</a>."
+msgstr ""
+"Den API-Schlüssel bekommen Sie beim API-Dienst unter <a href=\"https://api."
+"fau.de/pub/v1/edu/__doc\">https://api.fau.de/pub/v1/edu/__doc</a>."
+
+#: build/block/block.json src/block/block.json
 msgctxt "block description"
 msgid "FAU-Studium Fachanteile"
 msgstr "FAU-Studium Fachanteile"
 
-#: build/block/block.json
+#: build/block/block.json src/block/block.json
 msgctxt "block title"
 msgid "FAU-Studium Fachanteile"
 msgstr ""
 "FAU-Studium Fachanteile\n"
 
-#: build/block/index.js:105 build/block/index.js:57 src/block/edit.js
+#: build/block/index.js:1 src/block/edit.js:57 src/block/edit.js:1
 msgid "Chart"
 msgstr "Diagramm"
 
@@ -46,12 +66,12 @@ msgstr "Diagramm"
 msgid "Copy"
 msgstr "Kopieren"
 
-#: includes/Metabox.php:32 build/block/index.js:75 build/block/index.js:34
-#: src/block/edit.js
+#: includes/Metabox.php:32 build/block/index.js:1 src/block/edit.js:34
+#: src/block/edit.js:1
 msgid "Degree"
 msgstr "Abschluss"
 
-#: includes/Settings.php:59
+#: includes/Settings.php:62
 msgid "DIP Edu API Key"
 msgstr "DIP Edu API-Key"
 
@@ -60,12 +80,16 @@ msgstr "DIP Edu API-Key"
 msgid "Display study subject shares as pie charts"
 msgstr "Studienfachanteile als Kreisdiagramm anzeigen"
 
+#: fau-degree-program-shares.php:186
+msgid "FAU"
+msgstr "FAU"
+
 #. Plugin Name of the plugin
 #: fau-degree-program-shares.php
 msgid "FAU Studium Fachanteile"
 msgstr "FAU Studium Fachanteile"
 
-#: build/block/index.js:95 build/block/index.js:52 src/block/edit.js
+#: build/block/index.js:1 src/block/edit.js:52 src/block/edit.js:1
 msgid "Format"
 msgstr "Format"
 
@@ -79,8 +103,16 @@ msgstr "https://blogs.fau.de/webworking/"
 msgid "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 msgstr "https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile"
 
+#: includes/Settings.php:99
+msgid "If not checked, the shortcode will not show anything in case of error."
+msgstr "Wenn nicht gesetzt, zeigt der Shortcode im Fehlerfall nichts an."
+
+#: includes/Settings.php:70
+msgid "Layout"
+msgstr "Darstellung"
+
 #. translators: 1: The plugin name, 2: The error string.
-#: fau-degree-program-shares.php:142
+#: fau-degree-program-shares.php:144
 msgid "Plugins: %1$s: %2$s"
 msgstr "Plugins: %1$s: %2$s"
 
@@ -89,21 +121,29 @@ msgstr "Plugins: %1$s: %2$s"
 msgid "RRZE-Webteam"
 msgstr "RRZE-Webteam"
 
-#: includes/Settings.php:24 includes/Settings.php:35
+#: includes/Settings.php:27 includes/Settings.php:38
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/Shortcode.php:70
+#: includes/Shortcode.php:85
 msgid "Share"
 msgstr "Anteil"
 
-#: includes/Metabox.php:52 build/block/index.js:114 build/block/index.js:63
-#: src/block/edit.js
+#: includes/Settings.php:77
+msgid "Show Errors"
+msgstr "Fehler anzeigen"
+
+#: includes/Settings.php:98
+msgid "Show errors in frontend"
+msgstr "Fehlermeldungen auf der Website anzeigen"
+
+#: includes/Metabox.php:52 build/block/index.js:1 src/block/edit.js:63
+#: src/block/edit.js:1
 msgid "Show Percent Values"
 msgstr "Prozentwerte anzeigen"
 
-#: includes/Metabox.php:49 build/block/index.js:124 build/block/index.js:72
-#: src/block/edit.js
+#: includes/Metabox.php:49 build/block/index.js:1 src/block/edit.js:72
+#: src/block/edit.js:1
 msgid "Show Title"
 msgstr "Titel anzeigen"
 
@@ -111,14 +151,18 @@ msgstr "Titel anzeigen"
 msgid "Study Shares Wizard"
 msgstr "Shortcode Studien-Fachanteile"
 
-#: includes/Metabox.php:40 includes/Shortcode.php:69 build/block/index.js:85
-#: build/block/index.js:43 src/block/edit.js
+#: includes/Metabox.php:40 includes/Shortcode.php:84 build/block/index.js:1
+#: src/block/edit.js:43 src/block/edit.js:1
 msgid "Subject"
 msgstr "Fach"
 
-#: build/block/index.js:109 build/block/index.js:58 src/block/edit.js
+#: build/block/index.js:1 src/block/edit.js:58 src/block/edit.js:1
 msgid "Table"
 msgstr "Tabelle"
+
+#: includes/Settings.php:87
+msgid "The API key is being used from the network installation."
+msgstr "Der API-Schlüssel der Netzwerkinstallation wird verwendet."
 
 #. translators: 1: Server PHP version number, 2: Required PHP version number.
 #: fau-degree-program-shares.php:103
