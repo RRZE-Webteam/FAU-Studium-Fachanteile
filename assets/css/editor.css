@@ -64,4 +64,11 @@
   width: auto;
 }
 
+.fau-subject-shares-error {
+  padding: 1em;
+  color: #78302f;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
 /*# sourceMappingURL=editor.css.map */

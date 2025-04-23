@@ -8,6 +8,7 @@ class Settings {
     protected string $pluginFile;
     private string $title;
     private string $slug;
+    private $options;
 
     public function __construct($pluginFile) {
         $this->pluginFile = $pluginFile;
@@ -18,6 +19,7 @@ class Settings {
         add_action('admin_init', [$this,'adminInit']);
         $this->title = plugin()->getName();
         $this->slug = plugin()->getSlug();
+        $this->options = get_option('fau-degree-program-shares', '');
     }
 
     public function adminMenu() {
@@ -62,6 +64,21 @@ class Settings {
             $this->slug,
             'fau-degree-program-shares-api'
         );
+
+        add_settings_section(
+            'fau-degree-program-shares-layout',
+            __('Layout', 'fau-degree-program-shares'),
+            '',
+            $this->slug
+        );
+
+        add_settings_field(
+            'show-errors',
+            __('Show Errors', 'fau-degree-program-shares'),
+            [$this, 'radioCallback'],
+            $this->slug,
+            'fau-degree-program-shares-layout'
+        );
     }
 
     public function textCallback() {
@@ -69,15 +86,17 @@ class Settings {
         if (API::isUsingNetworkKey()) {
             echo '<p>' . esc_html__('The API key is being used from the network installation.', 'fau-degree-program-shares') . '</p>';
         } else {
-
-
-            $options = get_option('fau-degree-program-shares', '');
-            $value = $options != '' ? $options['dip-edu-api-key'] : '';
+            $value = $this->options[ 'dip-edu-api-key' ] ?? '';
             echo '<input type="text" class="regular-text" id="dip-edu-api-key" name="fau-degree-program-shares[dip-edu-api-key]" value="' . esc_attr($value) . '" />';
-            
-            echo '<p>'.__('API Key can be optained from the API-Service at https://api.fau.de/pub/v1/edu/__doc', 'fau-degree-program-shares').'</p>';
+            echo '<p class="description">'.__('API Key can be obtained from the API-Service at <a href="https://api.fau.de/pub/v1/edu/__doc">https://api.fau.de/pub/v1/edu/__doc</a>.', 'fau-degree-program-shares').'</p>';
             
         }
+    }
+
+    public function radioCallback() {
+        $value = $this->options[ 'show-errors' ] ?? '';
+        echo '<input type="checkbox" id="show-errors" name="fau-degree-program-shares[show-errors]" value="on" ' . checked($value, 'on', false) . '><label for="show-errors">'.__('Show errors in frontend', 'fau-degree-program-shares').'</label></p>';
+        echo '<p class="description">' . __('If not checked, the shortcode will not show anything in case of error.', 'fau-degree-program-shares') . '</p>';
     }
 
 }

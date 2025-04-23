@@ -1,7 +1,7 @@
 === Plugin Name ===
 Plugin Name:        FAU Studium Fachanteile
 Plugin URI:         https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile
-Version:            1.1.0
+Version:            1.1.1
 Author:             RRZE-Webteam
 Author URI:         https://blogs.fau.de/webworking/
 License:            GNU General Public License Version 3

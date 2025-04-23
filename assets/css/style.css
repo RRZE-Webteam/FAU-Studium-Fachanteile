@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
 .fau-subject-shares {
   position: relative;
   display: flex;
@@ -6,6 +11,7 @@
   row-gap: 1em;
   column-gap: 2em;
   align-items: flex-start;
+  margin-top: 2em;
   margin-bottom: 2em;
 }
 .fau-subject-shares .chart-title {
@@ -56,6 +62,13 @@
 }
 .fau-subject-shares table.shares-table {
   width: auto;
+}
+
+.fau-subject-shares-error {
+  padding: 1em;
+  color: #78302f;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }
 
 /*# sourceMappingURL=style.css.map */
