@@ -3,7 +3,7 @@
 /*
 Plugin Name:        FAU Studium Fachanteile
 Plugin URI:         https://github.com/RRZE-Webteam/FAU-Studium-Fachanteile
-Version:            1.1.1
+Version:            1.1.2
 Description:        Display study subject shares as pie charts
 Author:             RRZE-Webteam
 Author URI:         https://blogs.fau.de/webworking/
