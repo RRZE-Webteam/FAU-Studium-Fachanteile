@@ -25,7 +25,6 @@ class API
             '64', //'Master of Health and Medical Management',
             '65', //'Master of Science',
             '66', //'Master of Education',
-            '69', //'Master of Marketing Management',
             '70', //'Master DBA',
             '73', //'Lehramt Realschule',
             '75', //'Lehramt Gymnasium',

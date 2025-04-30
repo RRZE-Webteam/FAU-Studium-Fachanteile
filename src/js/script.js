@@ -1,33 +1,30 @@
 jQuery(document).ready(function($) {
     $( function() {
         // tooltip
-        function onHoverToggleTooltip( e ) {
-            var 	$this	= $( this ),
-                //title	= $this.attr( 'title' ),
-                title = '<span class="tooltip-label">' + $this.data('label') + '</span> <span class="tooltip-percent">(' + $this.data('percent') + ')</span>',
-                type	= e.type,
-                offset 	= $this.offset(),
-                xOffset = e.pageX - offset.left + 10,
-                yOffset = e.pageY - offset.top + 30,
-                tooltip = $(this).parents('div.fau-subject-shares').find('div.tooltip');
-            if( type == 'mouseenter' ) {
-                tooltip.append(title)
-                    .hide().fadeIn(250)
-                    .css( 'top', ( yOffset ) + 'px' )
-                    .css( 'left', ( xOffset ) + 'px' );
-            } else if ( type == 'mouseleave' ) {
-                tooltip.fadeOut().empty();
-            } else if ( type == 'mousemove' ) {
-                tooltip
-                    .css( 'top', ( yOffset ) + 'px' )
-                    .css( 'left', ( xOffset ) + 'px' );
-            }
+        function showTooltip(evt) {
+            let tooltip = $(this).parents('div.fau-subject-shares').find('div.tooltip');
+            tooltip.append('<span class="tooltip-label">' + $(this).data('label') + '</span> <span class="tooltip-percent">(' + $(this).data('percent') + ')</span>')
+                .css('display', 'block')
+                .css('left', evt.offsetX + 'px')
+                .css('top', evt.offsetY + 'px');
+        }
+
+        function moveTooltip(evt) {
+            let tooltip = $(this).parents('div.fau-subject-shares').find('div.tooltip');
+            tooltip.css('left', evt.offsetX + 'px')
+                .css('top', evt.offsetY + 'px');
+        }
+
+        function hideTooltip() {
+            let tooltip = $(this).parents('div.fau-subject-shares').find('div.tooltip');
+            tooltip.css('display', 'none')
+            tooltip.empty()
         }
 
         $( document.querySelectorAll( '.chart-share' ) ).on({
-            mouseenter: onHoverToggleTooltip,
-            mouseleave: onHoverToggleTooltip,
-            mousemove: onHoverToggleTooltip
+            mouseenter: showTooltip,
+            mouseleave: hideTooltip,
+            mousemove: moveTooltip
         });
 
     });
