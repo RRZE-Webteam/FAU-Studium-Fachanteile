@@ -5,9 +5,35 @@ namespace Fau\DegreeProgram\Shares;
 class API
 {
     private string $api;
+    private array $degreesUsed;
 
     public function __construct() {
         $this->api = 'https://api.fau.de/pub/v1/edu/';
+        $this->degreesUsed = [
+            '4', //'Kirchliche Prüfung',
+            '5', //'Magisterprüfung (1 Fach)',
+            '8', //'Staatsexamen',
+            '10', //'Ph.D.',
+            '51', //'Bachelor of Arts (1 Fach)',
+            '52', //'Bachelor of Arts (2 Fächer)',
+            '55', //'Bachelor of Science',
+            '56', //'Bachelor of Education',
+            '60', //'Master of Business Administration',
+            '61', //'Master of Arts',
+            '62', //'Magister Legum/Master of Laws',
+            '63', //'Master of Health Business Administration',
+            '64', //'Master of Health and Medical Management',
+            '65', //'Master of Science',
+            '66', //'Master of Education',
+            '70', //'Master DBA',
+            '73', //'Lehramt Realschule',
+            '75', //'Lehramt Gymnasium',
+            '77', //'Lehramt Berufsschule',
+            '78', //'Lehramt Grundschule',
+            '79', //'Lehramt Mittelschule',
+            '94', //'Zusatzstudien',
+            '97', //'keine Abschlussprüfung'
+        ];
     }
 
     public function getShares($subject, $degree)
@@ -27,7 +53,8 @@ class API
             'sort' => rawurlencode('name=1'),
         ];
         if (!empty($key)) {
-            $query['lq'] = rawurlencode('campo_key=' . (int)$key);
+            $key = str_pad((int)$key, 3, '0', STR_PAD_LEFT);
+            $query['lq'] = rawurlencode('campo_key=' . $key);
         }
         if (!empty($searchTerm)) {
             $query['q'] = rawurlencode($searchTerm);
@@ -42,12 +69,21 @@ class API
             'sort' => rawurlencode('name=1'),
         ];
         if (!empty($key)) {
-            $query['lq'] = rawurlencode('campo_key=' . (int)$key);
+            $key = str_pad((int)$key, 2, '0', STR_PAD_LEFT);
+            $query['lq'] = rawurlencode('campo_key=' . $key);
         }
         if (!empty($searchTerm)) {
             $query['q'] = rawurlencode($searchTerm);
         }
-        return $this->getData($endpoint, $query);
+
+        $degrees = $this->getData($endpoint, $query);
+        $degreesFiltered = [];
+        foreach ($degrees as $degree) {
+            if (isset($degree['campo_key']) && in_array($degree['campo_key'], $this->degreesUsed)) {
+                $degreesFiltered[] = $degree;
+            }
+        }
+        return $degreesFiltered;
     }
 
     private function getData($endpoint, $query = [])
