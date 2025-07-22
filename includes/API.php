@@ -38,6 +38,7 @@ class API
 
     public function getShares($subject, $degree)
     {
+        $subject = str_pad((int)$subject, 3, '0', STR_PAD_LEFT);
         $endpoint = 'subjectShare';
         $query = [
             'lq' => rawurlencode('degree=' . $degree . '&subject=' . $subject),

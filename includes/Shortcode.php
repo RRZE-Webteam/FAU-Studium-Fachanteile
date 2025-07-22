@@ -46,18 +46,20 @@ class Shortcode
             return $showErrors ? sprintf(__('%sError%s: Please specify a degree.%s', 'fau-degree-program-shares'), '<p class="fau-subject-shares-error"><b>', '</b>', '</p>') : '';
         }
 
+        $subject = str_pad((int)$subject, 3, '0', STR_PAD_LEFT);
+
         $api = new API();
         $data = $api->getShares($subject, $degree);
 
         $title = '';
         $subjectName = $api->getSubjects($subject);
         $degreeName = $api->getDegrees($degree);
-        if ($showTitle) {
+        if ($showTitle && !empty($degreeName) && !empty($subjectName)) {
             $title = '<h3 class="chart-title">' . $degreeName[0]['name'] . ' ' . $subjectName[0]['name'] . '</h3>';
         }
 
         if (empty($data)) {
-            return $showErrors ? sprintf(__('%sError%s: No data for degree %s (%s) and subject %s (%s)%s', 'fau-degree-program-shares'), '<p class="fau-subject-shares-error"><b>', '</b>', $subject, $subjectName[0]['name'], $degree, $degreeName[0]['name'], '</p>' ) : '';
+            return $showErrors ? sprintf(__('%sError%s: No data for degree %s (%s) and subject %s (%s)%s', 'fau-degree-program-shares'), '<p class="fau-subject-shares-error"><b>', '</b>', $subject, ($subjectName[0]['name'] ?? __('not found', 'fau-studium-fachanteile')), $degree, $degreeName[0]['name'] ?? __('not found', 'fau-studium-fachanteile'), '</p>' ) : '';
         }
 
         $rand = rand(0, 9999);
