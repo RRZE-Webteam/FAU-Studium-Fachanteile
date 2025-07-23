@@ -59,7 +59,7 @@ class Shortcode
         }
 
         if (empty($data)) {
-            return $showErrors ? sprintf(__('%sError%s: No data for degree %s (%s) and subject %s (%s)%s', 'fau-degree-program-shares'), '<p class="fau-subject-shares-error"><b>', '</b>', $subject, ($subjectName[0]['name'] ?? __('not found', 'fau-studium-fachanteile')), $degree, $degreeName[0]['name'] ?? __('not found', 'fau-studium-fachanteile'), '</p>' ) : '';
+            return $showErrors ? sprintf(__('%sError%s: No data for subject %s (%s) and degree %s (%s)%s', 'fau-degree-program-shares'), '<p class="fau-subject-shares-error"><b>', '</b>', $subject, ($subjectName[0]['name'] ?? __('not found', 'fau-studium-fachanteile')), $degree, $degreeName[0]['name'] ?? __('not found', 'fau-studium-fachanteile'), '</p>' ) : '';
         }
 
         $rand = rand(0, 9999);
